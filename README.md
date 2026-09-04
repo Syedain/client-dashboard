@@ -1,16 +1,37 @@
-# React + Vite
+# Client Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React app for managing client onboarding and project tracking — built as a hands-on learning project covering core React concepts end-to-end.
 
-Currently, two official plugins are available:
+## Live Demo
+[add your Vercel link here once deployed]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+- Multi-step client onboarding wizard with validation
+- Client list dashboard with search & status filtering
+- Per-client detail page with a task tracker
+- Dark mode (Context API)
+- Data persistence via localStorage (custom hook)
+- Seed data loaded from a real API on first launch
+- Basic automated tests (Vitest + React Testing Library)
 
-## React Compiler
+## Tech Stack
+React 19 · Vite · React Router · Tailwind CSS · Vitest
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What This Demonstrates
+- Component composition & props
+- State management (useState, Context API)
+- Custom hooks (useLocalStorage, useFetch)
+- Client-side routing
+- Async data fetching with loading/error states
+- Basic automated testing
 
-## Expanding the ESLint configuration
+## Running Locally
+\`\`\`
+git clone https://github.com/Syedain/client-dashboard.git
+cd client-dashboard
+npm install
+npm run dev
+\`\`\`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Author
+Syedain Shahid Hussain
