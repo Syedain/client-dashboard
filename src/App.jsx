@@ -5,19 +5,13 @@ import ClientList from './components/ClientList.jsx'
 import ClientDetail from './components/ClientDetail.jsx'
 import StatsRow from './components/StatsRow.jsx'
 import { useTheme } from './context/ThemeContext.jsx'
+import useLocalStorage from './hooks/useLocalStorage.js'
 
 function App() {
 
   const { darkMode, toggleDarkMode } = useTheme()
-  
-  const [clients, setClients] = useState(() => {
-    const saved = localStorage.getItem('clients')
-    return saved ? JSON.parse(saved) : []
-  })
 
-  useEffect(() => {
-    localStorage.setItem('clients', JSON.stringify(clients))
-  }, [clients])
+  const [clients, setClients] = useLocalStorage('clients', [])
 
   function handleAddClient(newClient) {
     setClients((prev) => [...prev, newClient])

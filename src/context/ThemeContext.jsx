@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import useLocalStorage from '../hooks/useLocalStorage.js'
 
 // createContext makes a "channel" that any component can tune into.
 const ThemeContext = createContext(null)
@@ -6,14 +7,7 @@ const ThemeContext = createContext(null)
 // This Provider component wraps your whole app. Anything INSIDE it can
 // access the theme, no matter how deeply nested.
 export function ThemeProvider({ children }) {
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem('darkMode')
-    return saved ? JSON.parse(saved) : false
-  })
-
-  useEffect(() => {
-    localStorage.setItem('darkMode', JSON.stringify(darkMode))
-  }, [darkMode])
+  const [darkMode, setDarkMode] = useLocalStorage('darkMode', false)
 
   function toggleDarkMode() {
     setDarkMode((prev) => !prev)
