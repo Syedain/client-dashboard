@@ -20,7 +20,7 @@ function StepIndicator({ steps, current }) {
               >
                 {status === 'done' ? '✓' : index + 1}
               </span>
-              <span className="ml-2 text-sm text-slate-600 hidden sm:inline">
+              <span className="ml-2 text-sm text-slate-600 dark:text-slate-300 hidden sm:inline">
                 {label}
               </span>
             </div>

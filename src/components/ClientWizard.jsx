@@ -85,7 +85,7 @@ function ClientWizard({ onAddClient }) {
 
   if (submitted) {
     return (
-      <div className="max-w-lg mx-auto mt-10 p-6 bg-white rounded-xl shadow border border-slate-200 text-center">
+      <div className="max-w-lg mx-auto mt-10 p-6 bg-white dark:bg-slate-800 rounded-xl shadow border border-slate-200 dark:border-slate-700 text-center">
         <div className="text-4xl mb-2">✅</div>
         <h2 className="text-xl font-semibold text-slate-800">Client added!</h2>
         <p className="text-slate-500 mt-1">
@@ -106,40 +106,40 @@ function ClientWizard({ onAddClient }) {
   }
 
   return (
-    <div className="max-w-lg mx-auto mt-10 p-6 bg-white rounded-xl shadow border border-slate-200">
+    <div className="max-w-lg mx-auto mt-10 p-6 bg-white dark:bg-slate-800 rounded-xl shadow border border-slate-200 dark:border-slate-700">
       <StepIndicator steps={STEPS} current={step} />
 
       <form onSubmit={handleSubmit} noValidate>
         {step === 0 && (
           <fieldset className="space-y-4">
-            <legend className="font-semibold text-slate-800 mb-2">Client Info</legend>
+            <legend className="font-semibold text-slate-800 dark:text-white mb-2">Client Info</legend>
             <label className="block">
-              <span className="block text-sm font-medium text-slate-600 mb-1">Full name</span>
+              <span className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Full name</span>
               <input
                 type="text"
                 value={data.fullName}
                 onChange={(e) => updateField('fullName', e.target.value)}
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+                className="w-full border border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
               />
               {errors.fullName && <span className="text-xs text-red-500">{errors.fullName}</span>}
             </label>
             <label className="block">
-              <span className="block text-sm font-medium text-slate-600 mb-1">Email</span>
+              <span className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Email</span>
               <input
                 type="email"
                 value={data.email}
                 onChange={(e) => updateField('email', e.target.value)}
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+                className="w-full border border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
               />
               {errors.email && <span className="text-xs text-red-500">{errors.email}</span>}
             </label>
             <label className="block">
-              <span className="block text-sm font-medium text-slate-600 mb-1">Company</span>
+              <span className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Company</span>
               <input
                 type="text"
                 value={data.company}
                 onChange={(e) => updateField('company', e.target.value)}
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+                className="w-full border border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
               />
               {errors.company && <span className="text-xs text-red-500">{errors.company}</span>}
             </label>
@@ -148,14 +148,14 @@ function ClientWizard({ onAddClient }) {
 
         {step === 1 && (
           <fieldset className="space-y-4">
-            <legend className="font-semibold text-slate-800 mb-2">Project</legend>
+            <legend className="font-semibold text-slate-800 dark:text-white mb-2">Project</legend>
             <label className="block">
-              <span className="block text-sm font-medium text-slate-600 mb-1">Project scope</span>
+              <span className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Project scope</span>
               <textarea
                 rows={4}
                 value={data.projectScope}
                 onChange={(e) => updateField('projectScope', e.target.value)}
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+                className="w-full border border-slate-300 dark:border-slate-600 dark:bg-slate-700 dark:text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
               />
               {errors.projectScope && <span className="text-xs text-red-500">{errors.projectScope}</span>}
             </label>
@@ -164,7 +164,7 @@ function ClientWizard({ onAddClient }) {
 
         {step === 2 && (
           <fieldset>
-            <legend className="font-semibold text-slate-800 mb-2">Choose a plan</legend>
+            <legend className="font-semibold text-slate-800 dark:text-white mb-2">Choose a plan</legend>
             <div className="grid gap-3">
               {PLANS.map((plan) => (
                 <button
@@ -189,7 +189,7 @@ function ClientWizard({ onAddClient }) {
 
         {step === 3 && (
           <fieldset>
-            <legend className="font-semibold text-slate-800 mb-3">Review</legend>
+            <legend className="font-semibold text-slate-800 dark:text-white mb-3">Review</legend>
             <dl className="text-sm space-y-2">
               <div className="flex justify-between"><dt className="text-slate-400">Name</dt><dd>{data.fullName}</dd></div>
               <div className="flex justify-between"><dt className="text-slate-400">Email</dt><dd>{data.email}</dd></div>
