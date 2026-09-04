@@ -1,22 +1,65 @@
+import { useState, useMemo } from 'react'
 import ClientCard from './ClientCard.jsx'
 
+const STATUS_FILTERS = ['all', 'lead', 'in-progress', 'delivered']
+
 function ClientList({ clients }) {
-  if (clients.length === 0) {
-    return (
-      <p className="max-w-4xl mx-auto mt-10 text-center text-slate-400">
-        No clients yet — add one using the form above.
-      </p>
-    )
-  }
+  const [search, setSearch] = useState('')
+  const [statusFilter, setStatusFilter] = useState('all')
+
+  // useMemo re-runs this filtering logic ONLY when clients, search, or
+  // statusFilter actually change — not on every re-render for unrelated
+  // reasons. For a list this small it's not strictly necessary, but it's
+  // the standard pattern once lists grow, and worth learning now.
+  const filteredClients = useMemo(() => {
+    return clients.filter((client) => {
+      const matchesSearch = client.fullName
+        .toLowerCase()
+        .includes(search.toLowerCase())
+      const matchesStatus =
+        statusFilter === 'all' || client.status === statusFilter
+      return matchesSearch && matchesStatus
+    })
+  }, [clients, search, statusFilter])
 
   return (
     <div className="max-w-4xl mx-auto mt-10">
-      <h2 className="text-lg font-semibold text-slate-800 mb-4">Clients ({clients.length})</h2>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {clients.map((client) => (
-          <ClientCard key={client.id} client={client} />
-        ))}
+      <div className="flex flex-col sm:flex-row justify-between gap-3 mb-4">
+        <h2 className="text-lg font-semibold text-slate-800">
+          Clients ({filteredClients.length})
+        </h2>
+
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search by name..."
+            className="border border-slate-300 rounded-lg px-3 py-1.5 text-sm"
+          />
+          <select
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="border border-slate-300 rounded-lg px-3 py-1.5 text-sm"
+          >
+            {STATUS_FILTERS.map((s) => (
+              <option key={s} value={s}>
+                {s === 'all' ? 'All statuses' : s}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
+
+      {filteredClients.length === 0 ? (
+        <p className="text-center text-slate-400 mt-10">No clients match your search.</p>
+      ) : (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {filteredClients.map((client) => (
+            <ClientCard key={client.id} client={client} />
+          ))}
+        </div>
+      )}
     </div>
   )
 }

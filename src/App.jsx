@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ClientWizard from './components/ClientWizard.jsx'
 import ClientList from './components/ClientList.jsx'
 import ClientDetail from './components/ClientDetail.jsx'
+import StatsRow from './components/StatsRow.jsx'
 
 function App() {
   const [clients, setClients] = useState(() => {
@@ -32,6 +33,7 @@ function App() {
           element={
             <div className="min-h-screen bg-slate-50 py-10 px-4">
               <ClientWizard onAddClient={handleAddClient} />
+              <StatsRow clients={clients} />
               <ClientList clients={clients} />
             </div>
           }
