@@ -3,7 +3,7 @@
 A React app for managing client onboarding and project tracking — built as a hands-on learning project covering core React concepts end-to-end.
 
 ## Live Demo
-[add your Vercel link here once deployed]
+https://client-dashboard-beige-nu.vercel.app/
 
 ## Features
 - Multi-step client onboarding wizard with validation
